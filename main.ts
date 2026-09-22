@@ -50,8 +50,12 @@ namespace halloween {
     function _hookEnemyAI(s: Sprite): void {
         s.ay = 800
         s.vx = -60
+        let destroyed = false
+        s.onDestroyed(function () {
+            destroyed = true
+        })
         game.onUpdate(function () {
-            if (!s.alive()) return
+            if (destroyed) return
             if (s.isHittingTile(CollisionDirection.Right)) s.vx = -Math.abs(s.vx)
             else if (s.isHittingTile(CollisionDirection.Left)) s.vx = Math.abs(s.vx)
         })
