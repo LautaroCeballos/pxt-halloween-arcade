@@ -45,19 +45,20 @@ namespace halloween {
         })
     }
 
-    // Da al enemigo gravedad y un vaivén horizontal (izquierda<->derecha),
-    // rebotando al chocar contra un tile o el borde de la pantalla.
+    // Da al enemigo gravedad y un vaivén: 1 s a la derecha (vx 50) y 1 s a la
+    // izquierda (vx -50), alternando por siempre.
     function _hookEnemyAI(s: Sprite): void {
         s.ay = 800
-        s.vx = -60
         let destroyed = false
+        let toRight = true
+        s.vx = 50
         s.onDestroyed(function () {
             destroyed = true
         })
-        game.onUpdate(function () {
+        game.onUpdateInterval(1000, function () {
             if (destroyed) return
-            if (s.isHittingTile(CollisionDirection.Right)) s.vx = -Math.abs(s.vx)
-            else if (s.isHittingTile(CollisionDirection.Left)) s.vx = Math.abs(s.vx)
+            toRight = !toRight
+            s.vx = toRight ? 50 : -50
         })
     }
 
@@ -136,7 +137,7 @@ namespace halloween {
      * indicado (Player por defecto). Lo guarda en la variable (mySprite),
      * hace que la cámara lo siga y activa la regla de salirse de la pantalla.
      * Si el tipo es Enemy, lo coloca en la baldosa (26, 4), lo escala x4 y
-     * le da gravedad y un vaivén horizontal automático.
+     * le da gravedad y un vaivén automático (1 s derecha, 1 s izquierda).
      * @param img la imagen del jugador
      * @param kind el tipo del objeto (Player, Enemy, Food, etc.)
      */
