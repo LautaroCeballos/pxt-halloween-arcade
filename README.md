@@ -3,13 +3,13 @@
 for PXT/Arcade
 
 Extensión de bloques temática de Halloween para MakeCode Arcade, con el nivel
-`nivel1` embebido, reglas de juego y control del jugador.
+`halloweenNivel1` embebido, reglas de juego y control del jugador.
 
 ## Categoría Halloween
 
 ### Escenarios
 - **Establecer nivel inicial con imagen [fondo]** — fija la imagen de fondo
-  (picker de fondos, preseteado 160x120), activa el tilemap embebido `nivel1`
+  (picker de fondos, preseteado 160x120), activa el tilemap embebido `halloweenNivel1`
   (30x8) y registra las reglas de nivel:
   - Cofre (`chestClosed`): sonido `baDing`, +100 puntos y reemplaza la baldosa.
   - Enemigo: si el jugador cae desde arriba lo destruye (efecto de fuego) y
@@ -35,7 +35,7 @@ Extensión de bloques temática de Halloween para MakeCode Arcade, con el nivel
   tocar el suelo.
 
 ## Limitaciones
-- El tilemap `nivel1` va embebido en la extensión; no es un parámetro.
+- El tilemap `halloweenNivel1` va embebido en la extensión; no es un parámetro.
 - El salto solo se ejecuta si el sprite está en contacto con el suelo.
 - Depende de la extensión **Extra Effects** (fuego al aplastar enemigos) y de
   los tiles `sprites.dungeon.*` del target.

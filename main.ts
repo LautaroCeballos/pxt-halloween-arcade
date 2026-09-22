@@ -1,9 +1,9 @@
 /**
  * Bloques de Halloween para Arcade.
- * Incluye el nivel "nivel1" embebido (tilemap 30x8, TileScale.Sixteen),
+ * Incluye el nivel "halloweenNivel1" embebido (tilemap 30x8, TileScale.Sixteen),
  * reglas de cofre y enemigo, y el control del jugador.
  */
-//% color="#FF6D00" icon="\uf717" weight=100 block="Halloween"
+//% color="#FF6D00" icon="\uf186" weight=100 block="Halloween"
 //% groups=['Escenarios', 'Sprites', 'Fisicas', 'Coordenadas Cartesianas', 'Controles']
 namespace halloween {
     // ===== Estado interno (no expuesto a bloques) =====
@@ -54,7 +54,7 @@ namespace halloween {
         scene.onOverlapTile(kind, sprites.dungeon.chestClosed, function (sprite, location) {
             music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
             info.changeScoreBy(100)
-            tiles.setTileAt(location, assets.tile`miMosaico`)
+            tiles.setTileAt(location, assets.tile`halloweenMosaico`)
         })
 
         sprites.onOverlap(kind, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -101,7 +101,7 @@ namespace halloween {
     }
 
     /**
-     * Establece la imagen de fondo y activa el nivel embebido "nivel1",
+     * Establece la imagen de fondo y activa el nivel embebido "halloweenNivel1",
      * junto con las reglas de nivel (cofre +100 pto con sonido, y enemigos).
      * @param img imagen de fondo (picker de fondos, 160x120)
      */
@@ -111,7 +111,7 @@ namespace halloween {
     //% group="Escenarios" weight=100
     export function setInitialLevel(img: Image): void {
         scene.setBackgroundImage(img || image.create(160, 120))
-        tiles.setCurrentTilemap(tilemap`nivel1`)
+        tiles.setCurrentTilemap(tilemap`halloweenNivel1`)
         _registerRules(_playerKind)
     }
 
