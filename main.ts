@@ -45,6 +45,18 @@ namespace halloween {
         })
     }
 
+    // Da al enemigo gravedad y un vaivén horizontal (izquierda<->derecha),
+    // rebotando al chocar contra un tile o el borde de la pantalla.
+    function _hookEnemyAI(s: Sprite): void {
+        s.ay = 800
+        s.vx = -60
+        game.onUpdate(function () {
+            if (!s.alive()) return
+            if (s.isHittingTile(CollisionDirection.Right)) s.vx = -Math.abs(s.vx)
+            else if (s.isHittingTile(CollisionDirection.Left)) s.vx = Math.abs(s.vx)
+        })
+    }
+
     // Reglas de nivel: cofre (+100 y sonido) y choque contra enemigo.
     // Se registran una sola vez por cada kind de jugador (los handlers se acumulan).
     function _registerRules(kind: number): void {
@@ -119,7 +131,8 @@ namespace halloween {
      * Crea al jugador con la imagen dada (16x16 vacía por defecto) y el tipo
      * indicado (Player por defecto). Lo guarda en la variable (mySprite),
      * hace que la cámara lo siga y activa la regla de salirse de la pantalla.
-     * Si el tipo es Enemy, lo coloca en la baldosa (26, 4) y lo escala x4.
+     * Si el tipo es Enemy, lo coloca en la baldosa (26, 4), lo escala x4 y
+     * le da gravedad y un vaivén horizontal automático.
      * @param img la imagen del jugador
      * @param kind el tipo del objeto (Player, Enemy, Food, etc.)
      */
@@ -135,6 +148,7 @@ namespace halloween {
         if (k === SpriteKind.Enemy) {
             tiles.placeOnTile(s, tiles.getTileLocation(26, 4))
             s.setScale(4, ScaleAnchor.Middle)
+            _hookEnemyAI(s)
         } else {
             scene.cameraFollowSprite(s)
             _player = s

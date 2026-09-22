@@ -20,7 +20,8 @@ Extensión de bloques temática de Halloween para MakeCode Arcade, con el nivel
   jugador (imagen 16x16 vacía por defecto), con tipo configurable como el
   bloque `sprites.create`, la cámara lo sigue y activa la regla de caerse de la
   pantalla (y >= 120 → game over). Si el tipo es **Enemy**, lo coloca en la
-  baldosa (26, 4) y lo escala x4 (estilo `Crear_Enemigo`).
+  baldosa (26, 4), lo escala x4 y le da gravedad con un vaivén horizontal
+  automático (rebota contra tiles y bordes).
 
 ### Fisicas
 - **Establecer [mySprite] GRAVEDAD como [800]** — aplica aceleración vertical.
