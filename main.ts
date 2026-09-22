@@ -3,8 +3,8 @@
  * Incluye el nivel "nivel1" embebido (tilemap 30x8, TileScale.Sixteen),
  * reglas de cofre y enemigo, y el control del jugador.
  */
-//% color="#FF6D00" icon="\uf6e2" weight=100 block="Halloween"
-//% groups=['Nivel', 'Jugador', 'others']
+//% color="#FF6D00" icon="\uf0e7" weight=100 block="Halloween"
+//% groups=['Escenarios', 'Sprites', 'Fisicas', 'Coordenadas Cartesianas', 'Controles']
 namespace halloween {
     // ===== Estado interno (no expuesto a bloques) =====
     let _player: Sprite = null
@@ -108,7 +108,7 @@ namespace halloween {
     //% blockId=halloween_set_initial_level
     //% block="Establecer nivel inicial con imagen $img"
     //% img.shadow=background_image_picker
-    //% group="Nivel" weight=100
+    //% group="Escenarios" weight=100
     export function setInitialLevel(img: Image): void {
         scene.setBackgroundImage(img || image.create(160, 120))
         tiles.setCurrentTilemap(tilemap`nivel1`)
@@ -128,7 +128,7 @@ namespace halloween {
     //% blockSetVariable=mySprite
     //% img.shadow=halloween_image_default
     //% kind.shadow=spritekind
-    //% group="Jugador" weight=100
+    //% group="Sprites" weight=100
     export function setPlayer(img: Image, kind?: number): Sprite {
         const k = kind === undefined ? SpriteKind.Player : kind
         const s = sprites.create(img || image.create(16, 16), k)
@@ -155,7 +155,7 @@ namespace halloween {
     //% sprite.shadow=variables_get
     //% sprite.defl=mySprite
     //% ay.defl=800
-    //% group="Jugador" weight=90
+    //% group="Fisicas" weight=100
     export function setGravity(sprite: Sprite, ay: number): void {
         if (sprite) sprite.ay = ay
     }
@@ -172,7 +172,7 @@ namespace halloween {
     //% sprite.defl=mySprite
     //% x.defl=50
     //% y.defl=80
-    //% group="Jugador" weight=80
+    //% group="Coordenadas Cartesianas" weight=100
     export function setPosition(sprite: Sprite, x: number, y: number): void {
         if (sprite) sprite.setPosition(x, y)
     }
@@ -187,7 +187,7 @@ namespace halloween {
     //% sprite.shadow=variables_get
     //% sprite.defl=mySprite
     //% v.defl=100
-    //% group="Jugador" weight=70
+    //% group="Controles" weight=100
     export function movePlayer(sprite: Sprite, v: number): void {
         if (sprite) controller.moveSprite(sprite, v, 0)
     }
@@ -202,7 +202,7 @@ namespace halloween {
     //% sprite.shadow=variables_get
     //% sprite.defl=mySprite
     //% f.defl=300
-    //% group="Jugador" weight=60
+    //% group="Controles" weight=90
     export function jump(sprite: Sprite, f: number): void {
         _jumpSprite = sprite
         _jumpForce = f
