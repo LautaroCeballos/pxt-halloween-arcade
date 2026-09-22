@@ -3,7 +3,7 @@
  * Incluye el nivel "halloweenNivel1" embebido (tilemap 30x8, TileScale.Sixteen),
  * reglas de cofre y enemigo, y el control del jugador.
  */
-//% color="#FF6D00" icon="\uf186" weight=100 block="Halloween"
+//% color="#FF6D00" icon="\uf135" weight=100 block="Arcade"
 //% groups=['Escenarios', 'Sprites', 'Fisicas', 'Coordenadas Cartesianas', 'Controles']
 namespace halloween {
     // ===== Estado interno (no expuesto a bloques) =====
