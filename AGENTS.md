@@ -1,0 +1,12 @@
+# AGENTS.md
+
+MakeCode Arcade extension repo: `pxt.halloween-arcade` (namespace `halloween`).
+
+## Structure
+- `pxt.json` — extension manifest (`device: "*"`, files: main.ts, tilemap.g.jres, tilemap.g.ts, README.md)
+- `main.ts` — 6 blocks in namespace `halloween` + internal jump/physics state
+- `tilemap.g.jres` / `tilemap.g.ts` — embedded tilemap `nivel1` (generated, do not edit)
+
+## Commands
+- No local toolchain. Build/test happens in the MakeCode Arcade editor: import repo via GitHub button, first `bump` generates tag, test as Local extension in a project, iterate by editing and refreshing.
+- Do not rename published `blockId`s or the namespace.
