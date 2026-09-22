@@ -3,8 +3,8 @@
 MakeCode Arcade extension repo: `pxt.halloween-arcade` (namespace `halloween`).
 
 ## Structure
-- `pxt.json` — extension manifest (`device: "*"`, files: main.ts, tilemap.g.jres, tilemap.g.ts, README.md)
-- `main.ts` — 6 blocks in namespace `halloween` + internal jump/physics state
+- `pxt.json` — extension manifest (`device: "*"` + `Extra Effects`, files: main.ts, tilemap.g.jres, tilemap.g.ts, icon.png, README.md)
+- `main.ts` — 6 blocks in namespace `halloween`, internal jump/fall state, and level rules (chest + enemy overlap) registered once per kind
 - `tilemap.g.jres` / `tilemap.g.ts` — embedded tilemap `nivel1` (generated, do not edit)
 
 ## Commands
