@@ -119,11 +119,12 @@ namespace halloween {
      * Crea al jugador con la imagen dada (16x16 vacía por defecto) y el tipo
      * indicado (Player por defecto). Lo guarda en la variable (mySprite),
      * hace que la cámara lo siga y activa la regla de salirse de la pantalla.
+     * Si el tipo es Enemy, lo coloca en la baldosa (26, 4) y lo escala x4.
      * @param img la imagen del jugador
      * @param kind el tipo del objeto (Player, Enemy, Food, etc.)
      */
     //% blockId=halloween_set_player
-    //% block="Establecer como objeto $img de tipo $kind"
+    //% block="objeto $img de tipo $kind"
     //% blockSetVariable=mySprite
     //% img.shadow=halloween_image_default
     //% kind.shadow=spritekind
@@ -131,11 +132,16 @@ namespace halloween {
     export function setPlayer(img: Image, kind?: number): Sprite {
         const k = kind === undefined ? SpriteKind.Player : kind
         const s = sprites.create(img || image.create(16, 16), k)
-        scene.cameraFollowSprite(s)
-        _player = s
-        _playerKind = k
-        _registerRules(k)
-        _hookFall()
+        if (k === SpriteKind.Enemy) {
+            tiles.placeOnTile(s, tiles.getTileLocation(26, 4))
+            s.setScale(4, ScaleAnchor.Middle)
+        } else {
+            scene.cameraFollowSprite(s)
+            _player = s
+            _playerKind = k
+            _registerRules(k)
+            _hookFall()
+        }
         return s
     }
 
