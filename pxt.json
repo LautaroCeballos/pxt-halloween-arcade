@@ -1,6 +1,6 @@
 {
     "name": "halloween-arcade",
-    "version": "1.2.0",
+    "version": "0.1.2",
     "description": "Extensión de bloques de Halloween para Arcade: nivel embebido (halloweenNivel1), jugador, gravedad, posición, movimiento y salto.",
     "license": "MIT",
     "dependencies": {
